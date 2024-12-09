@@ -9,7 +9,7 @@ running = True
 centerVec = pygame.Vector2(1280 / 2, 720 / 2)
 points = [(100, 100, -100), (-100, 100, -100), (-100, -100, -100), (100, -100, -100),
           (100, 100, 100), (-100, 100, 100), (-100, -100, 100), (100, -100, 100)]
-cusWidth = 4
+cusWidth = 3
 
 while running:
     # poll for events
@@ -24,12 +24,12 @@ while running:
     # RENDER YOUR GAME HERE
 
     for n, i in enumerate(points):
-        pygame.draw.circle(screen, "red", centerVec + (i[0], i[1]), 5, cusWidth)
+        #pygame.draw.circle(screen, "black", centerVec + (i[0], i[1]), 3, cusWidth)
         points[n] = calculations.rotate3Dvector(i, (0, 1, 1))
-    pygame.draw.lines(screen, "blue", True, [(i[0], i[1]) + centerVec for i in points[0:4]])
-    pygame.draw.lines(screen, "blue", True, [(i[0], i[1]) + centerVec for i in points[4:8]])
+    pygame.draw.lines(screen, "blue", True, [(i[0], i[1]) + centerVec for i in points[0:4]], cusWidth)
+    pygame.draw.lines(screen, "blue", True, [(i[0], i[1]) + centerVec for i in points[4:8]], cusWidth)
     for i in range(4):
-        pygame.draw.line(screen, "blue", (points[i][0], points[i][1]) + centerVec, (points[i+4][0], points[i+4][1]) + centerVec)
+        pygame.draw.line(screen, "blue", (points[i][0], points[i][1]) + centerVec, (points[i+4][0], points[i+4][1]) + centerVec, cusWidth)
 
     # RENDER END
 
